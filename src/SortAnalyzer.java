@@ -87,4 +87,26 @@ public class SortAnalyzer {
         }
         return this.array;
     }
+
+    /**
+     * Implementation of selection sort.
+     * @return The previously unsorted array, now sorted.
+     */
+    public ArrayList<Integer> selectionSort() {
+        // Iterate through every element in the array, except the last one.
+        for (int i = 0; i < array.size() - 1; i++) {
+            if (this.debug) System.out.println(STR."Outer loop: \{this.array}");
+
+            // Set the smallest index to the current index.
+            int smallestIndex = i;
+            for (int j = i + 1; j < array.size(); j++) {  // Iterate through the unsorted part of the array.
+                if (array.get(j) < array.get(smallestIndex)) smallestIndex = j;  // Compare all elements with each other and determine the smallest.
+            }
+            // Swap the smallest element in the unsorted part of the array with the element which gets included in the sorted part of the array.
+            Integer tempIndex = array.get(smallestIndex);
+            array.set(smallestIndex, array.get(i));
+            array.set(i, tempIndex);
+        }
+        return array;
+    }
 }
